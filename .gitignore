@@ -1,0 +1,125 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.python-version
+
+# Virtual environments
+venv/
+.venv/
+env/
+ENV/
+env.bak/
+pip-wheel-metadata/
+
+# Environment / secrets
+.env
+.env.*
+secrets.toml
+!.env.example
+
+# IDEs / editors
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Jupyter
+.ipynb_checkpoints
+
+# Packaging/build
+build/
+dist/
+*.egg-info/
+.eggs/
+*.egg
+wheelhouse/
+
+# Tests / coverage
+.pytest_cache/
+.coverage
+coverage.xml
+htmlcov/
+
+# Logs
+logs/
+*.log
+*.out
+
+# Streamlit
+.streamlit/
+.streamlit/secrets.toml
+.streamlit/config.toml
+
+# Deep learning / YOLO / weights / artifacts
+runs/
+results/
+predictions/
+outputs/
+weights/
+checkpoints/
+*.pt
+*.pth
+*.ckpt
+*.onnx
+*.pb
+*.tflite
+*.weights
+
+# YOLO-specific (common training outputs)
+yolov5/runs/
+yolov5/weights/
+yolov7/runs/
+yolov7/weights/
+yolov*/runs/
+exp*/
+
+# TensorBoard / events
+events.out.tfevents*
+tensorboard_logs/
+
+# ML experiment trackers / caches
+wandb/
+mlruns/
+*.sqlite
+*.log
+
+# Datasets / caches / large files
+data/
+datasets/
+dataset/
+*.zip
+*.tar.gz
+*.tgz
+*.h5
+*.npy
+*.npz
+cache/
+.cache/
+__data_backup__/
+
+# HuggingFace, pip caches
+.huggingface/
+transformers_cache/
+*.cache/
+
+# Docker / deployment
+docker-compose.override.yml
+.dockerignore
+
+# C extensions / compiled objects
+*.so
+*.dylib
+*.dll
+*.exe
+
+# Misc
+tmp/
+tmp-*/
+*.bak
+*.swp
+*.swm
