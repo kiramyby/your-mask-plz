@@ -29,6 +29,15 @@ A lightweight, real-time face mask detection application, designed for local dep
 ```text
 .
 ├── app.py                  # Streamlit Application Entry / 应用主程序
+├── src/                    # App modules / 应用模块
+│   ├── config.py           # UI defaults & constants
+│   ├── i18n.py             # Text + translation helper
+│   ├── pipeline.py         # Image/video preprocessing & inference helpers
+│   ├── services/           # Service layer (model loading, etc.)
+│   │   └── model_loader.py # Cached YOLO loader with UI errors
+│   └── ui/                 # UI flows for image/video
+│       ├── image_flow.py   # Image upload + detect + display
+│       └── video_flow.py   # Video upload + detect + slider state
 ├── face_mask.yaml          # Dataset Configuration / 数据集配置文件
 ├── dataset/                # Dataset Directory / 数据集目录
 │   ├── get_dataset.sh      # Script to download & prep data / 数据准备脚本
@@ -45,7 +54,7 @@ A lightweight, real-time face mask detection application, designed for local dep
 Requires Python 3.10+. / 需要 Python 3.10 及以上版本
 
 ```zsh
-pip install "ultralytics>=8.3" opencv-python streamlit
+pip install "ultralytics>=8.3" opencv-python pillow streamlit
 ```
 
 ### 2. Run Application / 运行应用
@@ -58,7 +67,13 @@ streamlit run app.py
 Follow the terminal output to visit the app (usually `http://localhost:8501`).
 请跟随终端输出访问应用（通常为 `http://localhost:8501`）
 
+Notes / 说明：
+- Default model path is `runs/detect/train/weights/best.onnx`. Update in the sidebar if you export elsewhere.
+- Video inference uses a frame step slider to balance speed vs. coverage.
+
 ---
+- 默认模型路径为 `runs/detect/train/weights/best.onnx`，如果导出到其他位置请在侧边栏更新。
+- 视频推理使用帧步长滑块，可在性能与覆盖率之间进行权衡。
 
 ## Training Pipeline / 训练流程
 
