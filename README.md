@@ -107,8 +107,16 @@ yolo task=detect mode=train model=yolo11n.pt data=face_mask.yaml epochs=100 imgs
 ### 3. Evaluate / 评估
 Validate the model performance. / 验证模型性能
 
+**Validation Set (验证集)**:
+Used for tuning and checking training progress. / 用于调优和检查训练进度。
 ```zsh
 yolo mode=val model=runs/detect/train/weights/best.pt data=face_mask.yaml
+```
+
+**Test Set (测试集)**:
+Used for final performance evaluation on unseen data. / 用于最终评估模型在未见数据上的表现。
+```zsh
+yolo mode=val model=runs/detect/train/weights/best.pt data=face_mask.yaml split=test
 ```
 
 ### 4. Predict Check / 推理自检
