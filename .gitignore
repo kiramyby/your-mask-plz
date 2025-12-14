@@ -56,7 +56,25 @@ logs/
 .streamlit/config.toml
 
 # Deep learning / YOLO / weights / artifacts
-runs/
+# runs/  <-- Modified to allow charts
+runs/*
+!runs/detect/
+runs/detect/*
+!runs/detect/train/
+runs/detect/train/*
+!runs/detect/train/*.png
+!runs/detect/train/*.jpg
+!runs/detect/train/*.csv
+!runs/detect/train/*.yaml
+!runs/detect/val/
+runs/detect/val/*
+!runs/detect/val/*.png
+!runs/detect/val/*.jpg
+!runs/detect/val2/
+runs/detect/val2/*
+!runs/detect/val2/*.png
+!runs/detect/val2/*.jpg
+
 results/
 predictions/
 outputs/

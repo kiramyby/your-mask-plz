@@ -119,6 +119,9 @@ Used for final performance evaluation on unseen data. / 用于最终评估模型
 yolo mode=val model=runs/detect/train/weights/best.pt data=face_mask.yaml split=test
 ```
 
+> **Detailed Report**: See [TEST_REPORT.md](TEST_REPORT.md) for full evaluation metrics, confusion matrices, and training curves.
+> **详细报告**：查看 [TEST_REPORT.md](TEST_REPORT.md) 获取完整的评估指标、混淆矩阵和训练曲线。
+
 ### 4. Predict Check / 推理自检
 Run a quick prediction on validation set. / 在验证集上进行快速推理检查
 

@@ -32,11 +32,16 @@
 - **分类损失 (Class Loss)**: 降至约 0.57 (验证集)
 - **DFL 损失 (DFL Loss)**: 降至约 1.16 (验证集)
 
+![Training Results](runs/detect/train/results.png)
+
 ### 3.2 混淆矩阵与曲线 (Confusion Matrix & Curves)
 评估生成了多个图表，可在 `runs/detect/val` 目录下查看：
 - **混淆矩阵 (Confusion Matrix)**: 展示 `mask` 和 `no_mask` 类别之间的分类准确度。
 - **F1-置信度曲线 (F1-Confidence Curve)**: 展示不同置信度阈值下精确率和召回率之间的权衡。
 - **精确率-召回率曲线 (Precision-Recall Curve)**: 展示模型在不同阈值下的性能。
+
+![Confusion Matrix](runs/detect/train/confusion_matrix.png)
+![PR Curve](runs/detect/train/BoxPR_curve.png)
 
 ### 3.3 测试集结果 (Test Set Results)
 为了验证模型的泛化能力，我们在独立的测试集 (`split='test'`) 上进行了评估。测试集包含 120 张图像和 659 个实例。
@@ -47,9 +52,16 @@
 | **no_mask** | 46 | 156 | 0.826 | 0.790 | 0.819 | 0.451 |
 | **mask** | 104 | 503 | 0.912 | 0.932 | 0.968 | 0.669 |
 
+![Test Set Confusion Matrix](runs/detect/val2/confusion_matrix_normalized.png)
+
 **分析**:
 - 模型在测试集上的表现 (mAP50 89.4%) 略优于验证集 (mAP50 88.6%)，这表明模型没有过拟合，且具有良好的泛化能力。
 - `mask` 类别的检测效果显著优于 `no_mask` 类别 (mAP50: 96.8% vs 81.9%)。这可能是因为 `no_mask` 的特征（人脸多样性）比口罩特征更复杂。
+
+### 3.4 预测样本示例 (Prediction Samples)
+以下展示了模型在验证集/测试集上的实际检测效果：
+
+![Prediction Batch](runs/detect/val/val_batch0_pred.jpg)
 
 ## 4. 定性结果 (Qualitative Results - Prediction)
 
