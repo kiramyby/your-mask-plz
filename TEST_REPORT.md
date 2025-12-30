@@ -48,16 +48,16 @@
 - **分类损失 (Class Loss)**: 降至约 0.57 (验证集)
 - **DFL 损失 (DFL Loss)**: 降至约 1.16 (验证集)
 
-![Training Results](runs/detect/train/results.png)
+![Training Results](report_figures/01_training_results.png)
 
 ### 3.2 混淆矩阵与曲线 (Confusion Matrix & Curves)
-评估生成了多个图表，可在 `runs/detect/val` 目录下查看：
+评估生成了多个关键图表（已整理至 `report_figures/` 目录）：
 - **混淆矩阵 (Confusion Matrix)**: 展示 `mask` 和 `no_mask` 类别之间的分类准确度。
 - **F1-置信度曲线 (F1-Confidence Curve)**: 展示不同置信度阈值下精确率和召回率之间的权衡。
 - **精确率-召回率曲线 (Precision-Recall Curve)**: 展示模型在不同阈值下的性能。
 
-![Confusion Matrix](runs/detect/train/confusion_matrix.png)
-![PR Curve](runs/detect/train/BoxPR_curve.png)
+![Confusion Matrix](report_figures/02_confusion_matrix_train.png)
+![PR Curve](report_figures/03_PR_curve_train.png)
 
 ### 3.3 测试集结果 (Test Set Results)
 为了验证模型的泛化能力，我在独立的测试集 (`split='test'`) 上进行了评估。测试集包含 120 张图像和 659 个实例。
@@ -68,7 +68,7 @@
 | **no_mask** | 46 | 156 | 0.826 | 0.790 | 0.819 | 0.451 |
 | **mask** | 104 | 503 | 0.912 | 0.932 | 0.968 | 0.669 |
 
-![Test Set Confusion Matrix](runs/detect/val2/confusion_matrix_normalized.png)
+![Test Set Confusion Matrix](report_figures/04_confusion_matrix_test.png)
 
 **分析**:
 - 模型在测试集上的表现 (mAP50 89.4%) 略优于验证集 (mAP50 88.6%)，这表明模型没有过拟合，且具有良好的泛化能力。
@@ -77,18 +77,19 @@
 ### 3.4 预测样本示例 (Prediction Samples)
 以下展示了模型在验证集/测试集上的实际检测效果：
 
-![Prediction Batch](runs/detect/val/val_batch0_pred.jpg)
+![Prediction Batch](report_figures/05_prediction_samples.jpg)
 
-## 4. 定性结果 (Qualitative Results - Prediction)
+## 4. 定性结果 (Qualitative Results)
 
-模型在 `runs/detect/predict` 目录下的多样化图像集上进行了测试。测试集包含具有挑战性的场景，例如：
-- 人群密集场所（如：`people-waiting-at-bus-stop`, `airport-passengers`）
-- 特写镜头（如：`Model-with-White-face-mask`）
-- 各种光照条件
+我在多样化的真实场景中测试了模型的检测能力。测试场景包括：
+- **人群密集场所**: 公交站、机场等多人场景
+- **单人特写**: 不同角度、不同光照条件下的人脸
+- **复杂背景**: 各种室内外环境
 
 ### 观察结果 (Observations)
-- 模型在单人和人群场景中均表现出稳健的检测能力。
-- 在大多数场景下，它能成功区分戴口罩和未戴口罩的人脸。
+- 模型在单人和人群场景中均表现出稳健的检测能力
+- 在大多数场景下，能够成功区分戴口罩和未戴口罩的人脸
+- 对于部分遮挡、侧脸等困难样本也有较好的检测效果
 
 ## 5. 软件系统实现 (Software System Implementation)
 
